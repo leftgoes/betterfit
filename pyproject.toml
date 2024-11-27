@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 package-mode = true
 name = "betterfit"
-version = "0.0.2a1"
+version = "0.0.2a2"
 description = "Regression of data with error propagation"
 license = "MIT"
 authors = [
