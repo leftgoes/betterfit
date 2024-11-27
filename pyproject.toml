@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "betterfit"
+authors = [
+    {name = "Ha Jong Kim"},
+]
+version = "0.0.1"
+description = "Regression of data with error propagation"
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.12"
+keywords = ["regression", "data"]
+license = {file = "LICENSE"}
+classifiers = [
+    "License :: OSI Approved :: MIT License"
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13"
+]
+dependencies = [
+    "matplotlib",
+    "numpy >= 2",
+    "sympy",
+    "uncertainties >= 3",
+]
+dynamic = ["version"]
+
+[options.package_data]
+betterfit = ["py.typed"]
+
+[options.extras_require]
+testing = [
+    "pytest",
+    "pytest-cov",
+    "mypy"
+]
+
+[tool.pytest.ini_options]
+addopts = ["--cov=betterfit"]
+testpaths = [
+    "tests",
+]
