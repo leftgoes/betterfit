@@ -134,6 +134,8 @@ jobs:
     needs:
       - release-build
       - pypi-publish
+    permissions:
+      contents: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
