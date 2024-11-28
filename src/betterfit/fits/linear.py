@@ -40,7 +40,6 @@ class LinearFit(Fit):
         """
         x, y, xerr, yerr = self.xy_data(x_expr, y_expr)
         weights = 1 / (xerr * yerr) ** 2
-        weights = np.fromiter((1.0 for _ in yerr), dtype=float)
 
         x_weighted_mean = np.sum(weights * x) / weights.sum()
         y_weighted_mean = np.sum(weights * y) / weights.sum()
@@ -73,7 +72,19 @@ class LinearFit(Fit):
                     **kwargs)
 
     @override
-    def plot_fit_on(self, ax: Axes) -> None:
+    def plot_fit_on(self, ax: Axes, fmt: str = '', *,
+                    label: str | MissingType = MISSING,
+                    autolabel: bool = False,
+                    **kwargs) -> None:
+        if autolabel:
+            _label_prefix = f'{label} ' if label is not MISSING else ''
+            _plus_str = '+' if self['b'] >= 0 else '-'
+            kwargs['label'] = f'{_label_prefix}${self['m']:.3g}x {_plus_str} {abs(self['b']):.3g}$'
+        elif label is not MISSING:
+            kwargs['label'] = label
+
         _xfit = np.linspace(*ax.get_xlim())
 
-        ax.plot(_xfit, self(_xfit))
+        ax.plot(_xfit, self(_xfit),
+                fmt,
+                **kwargs)

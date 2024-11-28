@@ -3,6 +3,13 @@
 `pip install betterfit`
 
 ## Getting Started
+### Example Code
+1. Create two datasets: `resistance_data` and `length_data`, with associated errors.
+2. Define sympy symbols for the quantities `R` (resistance), `l` (length), and `d` (a constant), and an expression `phi` depending on these symbols.
+3. Perform a linear fit using `LinearFit` from `betterfit`, adding the constant `d` with a value and uncertainty, and the two datasets.
+4. Extract the slope and y-intercept of the fit, and print their values.
+5. Plot the fit using `matplotlib`, including the data points and the fitted line.
+
 Refer to [getting_started.py](tests/getting_started.py):
 ```python
 # getting_started.py

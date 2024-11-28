@@ -7,11 +7,11 @@ from betterfit import Dataset, LinearFit
 
 # create immutable datasets
 resistance_data = Dataset.fromiter(symbol='R',
-                                   values=[2000, 1800, 1600, 1400, 1200, 1000, 900],
-                                   errors=10)
+                                   nominal=[2000, 1800, 1600, 1400, 1200, 1000, 900],
+                                   error=10)
 length_data = Dataset.fromiter(symbol=smp.Symbol('l'),
-                               values=[160, 172, 192, 223, 254, 298, 327],
-                               errors=[1.5, 2.4, 2, 2.3, 2.1, 3, 5])
+                               nominal=[160, 172, 192, 223, 254, 298, 327],
+                               error=[1.5, 2.4, 2, 2.3, 2.1, 3, 5])
 length_data = length_data.multiply(1e-3)
 
 # define quantities as sympy symbols
